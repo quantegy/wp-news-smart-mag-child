@@ -1,0 +1,26 @@
+/*
+Theme Name: Smart Mag Child
+Theme URI: http://uci.edu
+Description: A child theme of SmartMag
+Author: Chris Walsh
+Author URI: http://uci.edu
+Template: smart-mag
+Version: 1.0
+*/
+
+@import url("../smart-mag/style.css");
+
+/*.main-featured .slider {padding:0; width:100%;}
+.main-featured .slider img {
+    width:100%;
+    max-width: 1128px;
+}
+.main-featured .pages {
+    padding-left: 0;
+    padding-right: 0;
+}*/
+.main-featured .blocks {
+    display: none;
+}
+
+span.comments {display:none;}

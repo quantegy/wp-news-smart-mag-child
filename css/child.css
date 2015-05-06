@@ -1,0 +1,38 @@
+.main-footer .menu li.facebook a:before {
+    font-family:FontAwesome;
+    text-decoration: none;
+    padding-right: 10px;
+    content:"\f09a";
+    font-size: 130%;
+}
+
+.main-footer .menu li.twitter a:before {
+    font-family:FontAwesome;
+    text-decoration: none;
+    padding-right: 10px;
+    content:"\f099";
+    font-size: 130%;
+}
+
+.main-footer .menu li.youtube a:before {
+    font-family:FontAwesome;
+    padding-right: 10px;
+    content:"\f167";
+    font-size: 130%;
+}
+
+.main-footer .menu li.flickr a:before {
+    font-family:FontAwesome;
+    text-decoration: none;
+    padding-right: 10px;
+    content:"\f16e";
+    font-size: 130%;
+}
+
+.main-footer .menu li.storify a:before {
+    font-family:FontAwesome;
+    padding-right: 10px;
+    text-decoration: none;
+    content:"\f0c9";
+    font-size: 130%;
+}
