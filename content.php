@@ -6,7 +6,6 @@
 
 // post has review? 
 $review = Bunyad::posts()->meta('reviews');
-
 ?>
 <article id="post-<?php the_ID(); ?>" class="<?php
 	// hreview has to be first class because of rich snippet classes limit 
@@ -78,12 +77,30 @@ $review = Bunyad::posts()->meta('reviews');
 		<!-- <a href="<?php //comments_link(); ?>" class="comments"><i class="fa fa-comments-o"></i> <?php //echo get_comments_number(); ?></a>-->
 		
 	</header><!-- .post-header -->
+
+    <?php
+    $this_post_excerpt = get_post()->post_excerpt;
+    if(strcmp($this_post_excerpt,"")!=0): ?>
+    <div class="post-excerpt">
+        <p><?php echo $this_post_excerpt; ?></p>
+    </div>
+    <?php endif; ?>
 	
 	<div class="post-meta">
-		<span class="posted-by"><?php //_ex('By', 'Post Meta', 'bunyad'); ?> 
-			<span class="reviewer" itemprop="author"><?php the_author_posts_link(); ?></span>
+		<span class="posted-by"><?php //_ex('By', 'Post Meta', 'bunyad'); ?>
+            <?php
+            if (is_plugin_active("cj-authorship/cj-authorship.php")):
+                $authors = \CJ_Authorship\CJ_Authorship_Handler::getAuthors(get_the_ID());
+                $isDisplayed = \CJ_Authorship\CJ_Authorship_Handler::isDisplayed(get_the_ID());
+                if(!empty($authors) && $isDisplayed):
+            ?>
+			        <span class="reviewer" itemprop="author"><?php the_author_posts_link(); ?></span>
+                <?php endif;
+            else: ?>
+                <span class="reviewer" itemprop="author"><?php the_author_posts_link(); ?></span>
+            <?php endif; ?>
 		</span>
-		 
+
 		<span class="posted-on"><?php _ex('on', 'Post Meta', 'bunyad'); ?>&nbsp;
 			<span class="dtreviewed">
 				<time class="value-datetime" datetime="<?php echo esc_attr(get_the_time('c')); ?>" itemprop="datePublished"><?php echo esc_html(get_the_date()); ?></time>
@@ -212,13 +229,26 @@ $review = Bunyad::posts()->meta('reviews');
 
 <?php endif; ?>
 
-<?php if (is_single() && Bunyad::options()->author_box) : // author box? ?>
+<?php
 
-	<h3 class="section-head"><?php _e('Author', 'bunyad'); ?></h3>
+if (is_plugin_active("cj-authorship/cj-authorship.php")):
+    $authors = \CJ_Authorship\CJ_Authorship_Handler::getAuthors(get_the_ID());
+    $isDisplayed = \CJ_Authorship\CJ_Authorship_Handler::isDisplayed(get_the_ID());
 
-	<?php get_template_part('partial-author'); ?>
+    if (is_single() && Bunyad::options()->author_box && $isDisplayed && !empty($authors)) : // author box? ?>
 
-<?php endif; ?>
+        <h3 class="section-head"><?php _e('Author', 'bunyad'); ?></h3>
+        <?php get_template_part('partial-author'); ?>
+
+    <?php endif;
+else:
+    if (is_single() && Bunyad::options()->author_box) : // author box? ?>
+
+    <h3 class="section-head"><?php _e('Author', 'bunyad'); ?></h3>
+    <?php get_template_part('partial-author');
+
+    endif;
+endif; ?>
 
 <?php if (is_single() && Bunyad::options()->related_posts && ($related = Bunyad::posts()->get_related(Bunyad::core()->get_sidebar() == 'none' ? 3 : 3))): // && Bunyad::options()->related_posts != false): ?>
 
