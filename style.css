@@ -24,3 +24,19 @@ Version: 1.0
 }
 
 span.comments {display:none;}
+
+.portrait-header {
+    width: 50%;
+    float: left;
+    margin-bottom: 0;
+    margin-right: 20px;
+}
+
+.uci-post-image-portrait img {
+    width: 100%;
+    height: auto;
+}
+
+.post-content {
+    z-index: -1;
+}

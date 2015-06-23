@@ -16,6 +16,7 @@ function my_custom_init() {
     ));
     
     add_image_size('main-slider-full', 1078, 516, true);
+    add_image_size('full-size-image', 0, 0, false);
 }
 
 add_action('wp_print_scripts', 'ucinews_wp_print_scripts');
@@ -54,4 +55,19 @@ function ucinews_widgets_init() {
     require_once 'News_Widget.php';
 
     register_widget('Wordpress\UCI\News_Widget');
+}
+
+/**
+ * @return bool True is featured image is square or portrait aspect ratio
+ */
+function ucinews_is_featured_portrait() {
+    $isPortrait = false;
+    $thumbID = get_post_thumbnail_id();
+    $thumbURL = wp_get_attachment_image_src($thumbID, 'full-size-image');
+    $width = $thumbURL[1];
+    $height = $thumbURL[2];
+    if($height/$width >= 1){
+        $isPortrait = true;
+    }
+    return $isPortrait;
 }

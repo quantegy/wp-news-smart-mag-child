@@ -10,10 +10,19 @@ $review = Bunyad::posts()->meta('reviews');
 <article id="post-<?php the_ID(); ?>" class="<?php
 	// hreview has to be first class because of rich snippet classes limit 
 	echo ($review ? 'hreview ' : '') . join(' ', get_post_class()); ?>" itemscope itemtype="http://schema.org/Article">
-	
-	<header class="post-header cf">
+	<?php
+    $portraitImage = ucinews_is_featured_portrait();
+    if($portraitImage){
+        echo "<header class='post-header cf portrait-header'>";
+    }
+    else{
+        echo "<header class='post-header cf'>";
+    }
+    ?>
 
-	<?php if (!Bunyad::posts()->meta('featured_disable')): ?>
+
+	<?php
+    if (!Bunyad::posts()->meta('featured_disable')): ?>
 		<div class="featured">
 			<?php if (get_post_format() == 'gallery'): // get gallery template ?>
 			
@@ -28,8 +37,9 @@ $review = Bunyad::posts()->meta('reviews');
 			<?php else: // normal featured image ?>
 			
 				<a href="<?php $url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full'); echo $url[0]; ?>" title="<?php the_title_attribute(); ?>" itemprop="image">
-				
-				<?php if (Bunyad::options()->blog_thumb != 'thumb-left'): // normal container width image ?>
+
+				<?php
+				if (Bunyad::options()->blog_thumb != 'thumb-left'): // normal container width image ?>
 				
 					<?php if ((!in_the_loop() && Bunyad::posts()->meta('layout_style') == 'full') OR Bunyad::core()->get_sidebar() == 'none'): // largest images - no sidebar? ?>
 				
@@ -37,13 +47,22 @@ $review = Bunyad::posts()->meta('reviews');
 				
 					<?php else: ?>
 					
-						<?php the_post_thumbnail('main-slider', array('title' => strip_tags(get_the_title()))); ?>
+						<?php if (!$portraitImage): ?>
+                            <div class="uci-post-image-landscape">
+                                <?php the_post_thumbnail( 'main-slider', array('title' => strip_tags(get_the_title()))); ?>
+                            </div>
+                        <?php else: ?>
+                            <div class="uci-post-image-portrait">
+                                <?php
+                                the_post_thumbnail( 'full-size-image', array('title' => strip_tags(get_the_title()))); ?>
+                            </div>
+                        <?php endif; ?>
 					
 					<?php endif; ?>
 					
 				<?php else: ?>
 					<?php the_post_thumbnail('thumbnail', array('title' => strip_tags(get_the_title()))); ?>
-				<?php endif; ?>				
+				<?php endif; ?>
 				</a>
 								
 				<?php
@@ -56,7 +75,11 @@ $review = Bunyad::posts()->meta('reviews');
 				
 			<?php endif; ?>
 		</div>
-	<?php endif; // featured check ?>
+	<?php endif; // featured check
+    if($portraitImage){
+        echo "</header>";
+    }
+    ?>
 
 		<?php 
 			$tag = 'h1';
@@ -75,9 +98,9 @@ $review = Bunyad::posts()->meta('reviews');
 		</<?php echo $tag; ?>>
 		
 		<!-- <a href="<?php //comments_link(); ?>" class="comments"><i class="fa fa-comments-o"></i> <?php //echo get_comments_number(); ?></a>-->
-		
-	</header><!-- .post-header -->
-
+	<?php if(!$portraitImage): ?>
+	    </header><!-- .post-header -->
+    <?php endif; ?>
     <?php
     $this_post_excerpt = get_post()->post_excerpt;
     if(strcmp($this_post_excerpt,"")!=0): ?>
