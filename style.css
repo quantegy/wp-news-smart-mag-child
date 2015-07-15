@@ -37,6 +37,6 @@ span.comments {display:none;}
     height: auto;
 }
 
-.post-content {
-    z-index: -1;
+.featured {
+    z-index: 1;
 }
