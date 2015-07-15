@@ -117,7 +117,13 @@ $review = Bunyad::posts()->meta('reviews');
                 $isDisplayed = \CJ_Authorship\CJ_Authorship_Handler::isDisplayed(get_the_ID());
                 if(!empty($authors) && $isDisplayed):
             ?>
-			        <span class="reviewer" itemprop="author"><?php the_author_posts_link(); ?></span>
+			        <span class="reviewer" itemprop="author"><?php
+						$authorNames = array();
+						foreach($authors as $author){
+							$authorNames[] = $author->fullname;
+						}
+						echo implode(" and ", $authorNames);
+						?></span>
                 <?php endif;
             else: ?>
                 <span class="reviewer" itemprop="author"><?php the_author_posts_link(); ?></span>
