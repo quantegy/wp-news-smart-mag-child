@@ -71,3 +71,25 @@ function ucinews_is_featured_portrait() {
     }
     return $isPortrait;
 }
+
+function ucinews_filter_comments_recent($sidebarName){
+    ob_start();
+    $bool = dynamic_sidebar( $sidebarName );
+    if ( $bool ){
+        $str = ob_get_contents();
+        $doc = new DOMDocument();
+        $doc->loadHTML($str);
+        $xpath = new DomXpath($doc);
+        $elements = $xpath->query("//*[@id='bunyad-latest-posts-widget-2']/ul/li[1]/div/span");
+        if($elements!==False){
+            $elements->item(0)->parentNode->removeChild($elements->item(0));
+        }
+        $str = $doc->saveHTML();
+    }
+    else{
+        $str = '';
+    }
+    ob_end_clean();
+
+    return $str;
+}

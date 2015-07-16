@@ -308,7 +308,7 @@ endif; ?>
 					<?php echo apply_filters('bunyad_review_main_snippet', ''); ?>
 										
 					<!-- <span class="comments"><i class="fa fa-comments-o"></i>
-						<?php echo get_comments_number(); ?></span>	-->
+						<?php //echo get_comments_number(); ?></span>	-->
 					
 				</div>
 				
