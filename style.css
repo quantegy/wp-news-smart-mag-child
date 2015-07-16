@@ -40,3 +40,9 @@ span.comments {display:none;}
 .featured {
     z-index: 1;
 }
+
+.highlight-no-img {
+    position: relative;
+    margin-bottom: 20px;
+    display: inline-block;
+}
