@@ -78,18 +78,22 @@ function ucinews_filter_comments_recent($sidebarName){
     if ( $bool ){
         $str = ob_get_contents();
         $doc = new DOMDocument();
-        $doc->loadHTML($str);
+        $doc->loadXML($str);
+        //return $doc->saveHTML();
         $xpath = new DomXpath($doc);
-        $elements = $xpath->query("//*[@id='bunyad-latest-posts-widget-2']/ul/li[1]/div/span");
+        $elements = $xpath->query("//*[@id='bunyad-latest-posts-widget-2']/ul/li/div/span");
         if($elements!==False){
-            $elements->item(0)->parentNode->removeChild($elements->item(0));
+            foreach($elements as $element){
+                  $element->parentNode->removeChild($element);
+            }
         }
-        $str = $doc->saveHTML();
+        $str = $doc->saveXML($doc->documentElement, LIBXML_NOXMLDECL);
     }
     else{
         $str = '';
     }
     ob_end_clean();
+
 
     return $str;
 }
