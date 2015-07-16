@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', false);
+ini_set('display_errors', true);
 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 
 set_include_path(get_include_path().PATH_SEPARATOR.dirname(__FILE__).DIRECTORY_SEPARATOR.'includes');
@@ -74,12 +74,13 @@ function ucinews_is_featured_portrait() {
 
 function ucinews_filter_comments_recent($sidebarName){
     ob_start();
+    $str = '';
     $bool = dynamic_sidebar( $sidebarName );
     if ( $bool ){
         $str = ob_get_contents();
+        $str = "<li><ul>".$str."</ul></li>";
         $doc = new DOMDocument();
         $doc->loadXML($str);
-        //return $doc->saveHTML();
         $xpath = new DomXpath($doc);
         $elements = $xpath->query("//*[@id='bunyad-latest-posts-widget-2']/ul/li/div/span");
         if($elements!==False){
@@ -88,9 +89,6 @@ function ucinews_filter_comments_recent($sidebarName){
             }
         }
         $str = $doc->saveXML($doc->documentElement, LIBXML_NOXMLDECL);
-    }
-    else{
-        $str = '';
     }
     ob_end_clean();
 
