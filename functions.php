@@ -72,7 +72,15 @@ function ucinews_is_featured_portrait() {
     return $isPortrait;
 }
 
-function ucinews_filter_comments_recent($sidebarName){
+
+/**
+ * Filters the sidebar markup for accessibility. Removes invalid span for
+ * comments and removes links for thumbnails when no thumbnail is present
+ *
+ * @param $sidebarName The name of the sidebar to be filtered
+ * @return string   The markup for the filtered sidebar
+ */
+function ucinews_filter_sidebar($sidebarName){
     ob_start();
     $str = '';
     $bool = dynamic_sidebar( $sidebarName );
@@ -86,6 +94,14 @@ function ucinews_filter_comments_recent($sidebarName){
         if($elements!==False){
             foreach($elements as $element){
                   $element->parentNode->removeChild($element);
+            }
+        }
+        $elements = $xpath->query("//*[@id='bunyad-latest-posts-widget-2']/ul/li/a");
+        if($elements!==False){
+            foreach($elements as $element){
+                if($element->firstChild->nodeType!=XML_ELEMENT_NODE){
+                    $element->parentNode->removeChild($element);
+                }
             }
         }
         $str = $doc->saveXML($doc->documentElement, LIBXML_NOXMLDECL);
