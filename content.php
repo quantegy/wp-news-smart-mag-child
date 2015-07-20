@@ -292,7 +292,7 @@ endif; ?>
 		<li class="highlights column one-third">
 			
 			<article>
-					
+				<?php if(has_post_thumbnail()): ?>
 				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="image-link">
 					<?php the_post_thumbnail(
 						(Bunyad::core()->get_sidebar() == 'none' ? 'main-block' : 'gallery-block'),
@@ -303,7 +303,7 @@ endif; ?>
 							echo apply_filters('bunyad_post_formats_icon', ''); ?></span>
 					<?php endif; ?>
 				</a>
-				
+				<?php endif; ?>
 				<div class="meta">
 					<time datetime="<?php echo get_the_date(__('Y-m-d\TH:i:sP', 'bunyad')); ?>"><?php echo get_the_date(); ?> </time>
 					
