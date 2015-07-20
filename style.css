@@ -46,3 +46,13 @@ span.comments {display:none;}
     margin-bottom: 20px;
     display: inline-block;
 }
+
+nav .menu-item-has-children:hover ul,
+nav .menu-item-has-children ul.focused {
+    visibility: visible;
+    opacity: inherit;
+}
+nav li.menu-item-has-children li a:hover,
+nav li.menu-item-has-children li a:focus {
+    background: #0090aa;
+}

@@ -24,6 +24,7 @@ $review = Bunyad::posts()->meta('reviews');
 	<?php
     if (!Bunyad::posts()->meta('featured_disable')): ?>
 		<div class="featured">
+			<?php if(has_post_thumbnail()): ?>
 			<?php if (get_post_format() == 'gallery'): // get gallery template ?>
 			
 				<?php get_template_part('partial-gallery'); ?>
@@ -71,8 +72,9 @@ $review = Bunyad::posts()->meta('reviews');
 						
 					<div class="caption"><?php echo $caption; ?></div>
 						
-				<?php endif;?>
+					<?php endif;?>
 				
+				<?php endif; ?>
 			<?php endif; ?>
 		</div>
 	<?php endif; // featured check
