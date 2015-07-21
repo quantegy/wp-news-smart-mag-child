@@ -47,12 +47,8 @@ span.comments {display:none;}
     display: inline-block;
 }
 
-nav .menu-item-has-children:hover ul,
-nav .menu-item-has-children ul.focused {
+.menu-item.uci-menu-toggle-on > .sub-menu {
+    left: auto;
+    opacity: 1;
     visibility: visible;
-    opacity: inherit;
-}
-nav li.menu-item-has-children li a:hover,
-nav li.menu-item-has-children li a:focus {
-    background: #0090aa;
 }
