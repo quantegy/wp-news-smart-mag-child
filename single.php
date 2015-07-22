@@ -8,7 +8,7 @@
 
 <?php get_header(); ?>
 
-<div class="main wrap cf">
+<main class="main wrap cf">
 	<div class="row">
 		<div class="col-8 main-content">
 		
@@ -40,6 +40,6 @@
 		<?php Bunyad::core()->theme_sidebar(); ?>
 		
 	</div> <!-- .row -->
-</div> <!-- .main -->
+</main> <!-- .main -->
 
 <?php get_footer(); ?>

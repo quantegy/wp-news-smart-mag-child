@@ -162,9 +162,6 @@ endif;
 					
 					<?php echo apply_filters('bunyad_review_main_snippet', ''); ?>
 					
-					<!-- <span class="comments"><a href="<?php echo esc_attr(get_comments_link()); ?>"><i class="fa fa-comments-o"></i>
-						<?php echo get_comments_number(); ?></a></span> -->
-					
 				</div>
 				
 				<h2 itemprop="name"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
