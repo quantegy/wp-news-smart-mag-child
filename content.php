@@ -24,6 +24,7 @@ $review = Bunyad::posts()->meta('reviews');
 	<?php
     if (!Bunyad::posts()->meta('featured_disable')): ?>
 		<div class="featured">
+			<?php if(has_post_thumbnail()): ?>
 			<?php if (get_post_format() == 'gallery'): // get gallery template ?>
 			
 				<?php get_template_part('partial-gallery'); ?>
@@ -71,8 +72,9 @@ $review = Bunyad::posts()->meta('reviews');
 						
 					<div class="caption"><?php echo $caption; ?></div>
 						
-				<?php endif;?>
+					<?php endif;?>
 				
+				<?php endif; ?>
 			<?php endif; ?>
 		</div>
 	<?php endif; // featured check
@@ -105,7 +107,7 @@ $review = Bunyad::posts()->meta('reviews');
     $this_post_excerpt = get_post()->post_excerpt;
     if(strcmp($this_post_excerpt,"")!=0): ?>
     <div class="post-excerpt">
-        <p><?php echo $this_post_excerpt; ?></p>
+        <p><strong><?php echo $this_post_excerpt; ?></strong></p>
     </div>
     <?php endif; ?>
 	
@@ -117,7 +119,13 @@ $review = Bunyad::posts()->meta('reviews');
                 $isDisplayed = \CJ_Authorship\CJ_Authorship_Handler::isDisplayed(get_the_ID());
                 if(!empty($authors) && $isDisplayed):
             ?>
-			        <span class="reviewer" itemprop="author"><?php the_author_posts_link(); ?></span>
+			        <span class="reviewer" itemprop="author"><?php
+						$authorNames = array();
+						foreach($authors as $author){
+							$authorNames[] = $author->fullname;
+						}
+						echo implode(" and ", $authorNames);
+						?></span>
                 <?php endif;
             else: ?>
                 <span class="reviewer" itemprop="author"><?php the_author_posts_link(); ?></span>
@@ -149,7 +157,7 @@ $review = Bunyad::posts()->meta('reviews');
 	<div class="post-container cf">
 	
 		<div class="post-content-right">
-			<div class="post-content description <?php echo (Bunyad::posts()->meta('content_slider') ? 'post-slideshow' : ''); ?>" itemprop="articleBody">
+			<div class="post-content description<?php echo (Bunyad::posts()->meta('content_slider') ? 'post-slideshow' : ''); ?>" itemprop="articleBody">
 			
 				
 				<?php
@@ -204,10 +212,10 @@ $review = Bunyad::posts()->meta('reviews');
 		<span class="share-links">
 
 			<a href="http://twitter.com/home?status=<?php echo urlencode(get_permalink()); ?>" class="fa fa-twitter" title="<?php _e('Tweet It', 'bunyad'); ?>">
-				<span class="visuallyhidden"><?php _e('Twitter', 'bunyad'); ?></span></a>
+				<span class="visuallyhidden"><?php _e('Tweet It', 'bunyad'); ?></span></a>
 				
 			<a href="http://www.facebook.com/sharer.php?u=<?php echo urlencode(get_permalink()); ?>" class="fa fa-facebook" title="<?php _e('Share on Facebook', 'bunyad'); ?>">
-				<span class="visuallyhidden"><?php _e('Facebook', 'bunyad'); ?></span></a>
+				<span class="visuallyhidden"><?php _e('Share on Facebook', 'bunyad'); ?></span></a>
 				
 			<a href="http://plus.google.com/share?url=<?php echo urlencode(get_permalink()); ?>" class="fa fa-google-plus" title="<?php _e('Share on Google+', 'bunyad'); ?>">
 				<span class="visuallyhidden"><?php _e('Google+', 'bunyad'); ?></span></a>
@@ -260,14 +268,14 @@ if (is_plugin_active("cj-authorship/cj-authorship.php")):
 
     if (is_single() && Bunyad::options()->author_box && $isDisplayed && !empty($authors)) : // author box? ?>
 
-        <h3 class="section-head"><?php _e('Author', 'bunyad'); ?></h3>
+        <div class="section-head"><?php _e('Author', 'bunyad'); ?></div>
         <?php get_template_part('partial-author'); ?>
 
     <?php endif;
 else:
     if (is_single() && Bunyad::options()->author_box) : // author box? ?>
 
-    <h3 class="section-head"><?php _e('Author', 'bunyad'); ?></h3>
+    <div class="section-head"><?php _e('Author', 'bunyad'); ?></div>
     <?php get_template_part('partial-author');
 
     endif;
@@ -276,7 +284,7 @@ endif; ?>
 <?php if (is_single() && Bunyad::options()->related_posts && ($related = Bunyad::posts()->get_related(Bunyad::core()->get_sidebar() == 'none' ? 3 : 3))): // && Bunyad::options()->related_posts != false): ?>
 
 <section class="related-posts">
-	<h3 class="section-head"><?php _e('Related Posts', 'bunyad'); ?></h3> 
+	<h2 class="section-head"><?php _e('Related Posts', 'bunyad'); ?></h2> 
 	<ul class="highlights-box three-col related-posts">
 	
 	<?php foreach ($related as $post): setup_postdata($post); ?>
@@ -284,7 +292,7 @@ endif; ?>
 		<li class="highlights column one-third">
 			
 			<article>
-					
+				<?php if(has_post_thumbnail()): ?>
 				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="image-link">
 					<?php the_post_thumbnail(
 						(Bunyad::core()->get_sidebar() == 'none' ? 'main-block' : 'gallery-block'),
@@ -295,14 +303,14 @@ endif; ?>
 							echo apply_filters('bunyad_post_formats_icon', ''); ?></span>
 					<?php endif; ?>
 				</a>
-				
+				<?php endif; ?>
 				<div class="meta">
 					<time datetime="<?php echo get_the_date(__('Y-m-d\TH:i:sP', 'bunyad')); ?>"><?php echo get_the_date(); ?> </time>
 					
 					<?php echo apply_filters('bunyad_review_main_snippet', ''); ?>
 										
 					<!-- <span class="comments"><i class="fa fa-comments-o"></i>
-						<?php echo get_comments_number(); ?></span>	-->
+						<?php //echo get_comments_number(); ?></span>	-->
 					
 				</div>
 				

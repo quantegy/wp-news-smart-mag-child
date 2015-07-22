@@ -37,6 +37,95 @@ span.comments {display:none;}
     height: auto;
 }
 
-.post-content {
-    z-index: -1;
+.featured {
+    z-index: 1;
+}
+
+.highlight-no-img {
+    position: relative;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.menu-item.uci-menu-toggle-on > .sub-menu {
+    left: auto;
+    opacity: 1;
+    visibility: visible;
+}
+
+.highlights .meta {
+    color: #656565;
+}
+
+.posts-list .content time {
+    color: #656565;
+}
+
+.highlights h2 a {
+    font-size: 20px;
+    color:#1b3d6d;
+}
+
+.highlights h2 {
+    margin: 18px 0 10px 0;
+}
+
+.highlights h2:before {
+    margin-top: 5px;
+}
+
+.post-excerpt {
+    color:#3a4149;
+}
+
+.post-header .post-title {
+    font-size: 25px;
+    font-weight:bold;
+}
+
+.post-header .post-title:before {
+    top: 9px;
+}
+
+.post-content a {
+    text-decoration: underline;
+}
+
+.post-meta {
+    color: #656565;
+}
+
+.breadcrumbs .location {
+    color: #656565 !important;
+}
+
+.breadcrumbs {
+    color: #656565;
+}
+
+.related-posts .section-head {
+    color: #19232d !important;
+}
+
+.search .query {
+    border-right: 15px solid #fff;
+    background: #fff;
+    color: #656565;
+}
+
+.top-bar-content a {
+    color: #1b3d6d;
+}
+
+.main .sidebar .widgettitle {
+    margin-bottom: 26px;
+}
+
+.main-pagination .current {
+    color: #1b3d6d;
+}
+
+.main-pagination a:hover {
+  color: #1b3d6d;
+
 }
