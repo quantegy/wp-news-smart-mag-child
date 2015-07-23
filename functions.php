@@ -4,8 +4,7 @@ error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 
 set_include_path(get_include_path().PATH_SEPARATOR.dirname(__FILE__).DIRECTORY_SEPARATOR.'includes');
 
-wp_enqueue_script('tabbable_nav', get_theme_root_uri().'/smart-mag-child/js/tabbable_menus.js', 'jquery', false, true);
-
+wp_enqueue_script('tabbable_nav', get_theme_root_uri().'/smart-mag-child/js/genesis-uci-menu-toggle.js', 'jquery', false, true);
 
 add_action('after_setup_theme', 'my_custom_init', 12);
 function my_custom_init() {

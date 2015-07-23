@@ -135,28 +135,28 @@ endif;
 		<?php if ($count === 1): // main post - better highlighted ?>
 		
 			<?php if ($heading != 'section-head'): ?>
-				<span class="cat-title larger cat-<?php echo $taxonomy->term_id; ?>">
+				<span class="cat-title larger cat-<?php echo $taxonomy->term_id; ?><?php if(!has_post_thumbnail()):?> highlight-no-img<?php endif; ?>">
 					<a href="<?php echo esc_url($link); ?>"><?php echo esc_html($title); ?></a></span>
 			<?php endif; ?>
 			
 			<article itemscope itemtype="http://schema.org/Article">
-					
-				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="image-link" itemprop="url">
-					<?php the_post_thumbnail(
-								(Bunyad::core()->get_sidebar() != 'none' && $column == '1/3' 
-										? 'gallery-block' 
-										: (Bunyad::core()->get_sidebar() == 'none' ?  'main-slider' : 'main-block')
-								), 
-								array('class' => 'image', 'title' => strip_tags(get_the_title()))); ?>
-					
-					<?php if (get_post_format()): ?>
-						<span class="post-format-icon <?php echo esc_attr(get_post_format()); ?>"><?php
-							echo apply_filters('bunyad_post_formats_icon', ''); ?></span>
-					<?php endif; ?>
-					
-					<?php echo apply_filters('bunyad_review_main_snippet', '', 'stars'); ?>
-				</a>
-				
+				<?php if(has_post_thumbnail()): ?>
+					<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="image-link" itemprop="url">
+						<?php the_post_thumbnail(
+									(Bunyad::core()->get_sidebar() != 'none' && $column == '1/3'
+											? 'gallery-block'
+											: (Bunyad::core()->get_sidebar() == 'none' ?  'main-slider' : 'main-block')
+									),
+									array('class' => 'image', 'title' => strip_tags(get_the_title()))); ?>
+
+						<?php if (get_post_format()): ?>
+							<span class="post-format-icon <?php echo esc_attr(get_post_format()); ?>"><?php
+								echo apply_filters('bunyad_post_formats_icon', ''); ?></span>
+						<?php endif; ?>
+
+						<?php echo apply_filters('bunyad_review_main_snippet', '', 'stars'); ?>
+					</a>
+				<?php endif; ?>
 				<div class="meta">
 					<time datetime="<?php echo get_the_date(__('Y-m-d\TH:i:sP', 'bunyad')); ?>" itemprop="datePublished"><?php echo get_the_date(); ?> </time>
 					
