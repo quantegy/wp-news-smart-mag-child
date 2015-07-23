@@ -190,15 +190,15 @@ endif;
 				<li>
 			
 			<?php if ($type == 'thumb'): ?>
-				
-					<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('post-thumbnail', array('title' => strip_tags(get_the_title()))); ?>
+					<?php if(has_post_thumbnail()): ?>
+						<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('post-thumbnail', array('title' => strip_tags(get_the_title()))); ?>
 
-					<?php if (class_exists('Bunyad') && Bunyad::options()->review_show_widgets): ?>
-						<?php echo apply_filters('bunyad_review_main_snippet', ''); ?>
+						<?php if (class_exists('Bunyad') && Bunyad::options()->review_show_widgets): ?>
+							<?php echo apply_filters('bunyad_review_main_snippet', ''); ?>
+						<?php endif; ?>
+
+						</a>
 					<?php endif; ?>
-					
-					</a>
-					
 					<div class="content">
 
 						<?php 
