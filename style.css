@@ -52,3 +52,7 @@ span.comments {display:none;}
     opacity: 1;
     visibility: visible;
 }
+
+.highlights .meta {
+    color: #666;
+}
