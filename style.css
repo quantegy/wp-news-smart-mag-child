@@ -63,7 +63,7 @@ span.comments {display:none;}
 
 .highlights h2 a {
     font-size: 20px;
-    color:#1b3d6d;
+    color: #1b3d6d;
 }
 
 .highlights h2 {
@@ -75,12 +75,12 @@ span.comments {display:none;}
 }
 
 .post-excerpt {
-    color:#3a4149;
+    color: #3a4149;
 }
 
 .post-header .post-title {
     font-size: 25px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .post-header .post-title:before {
@@ -126,6 +126,37 @@ span.comments {display:none;}
 }
 
 .main-pagination a:hover {
-  color: #1b3d6d;
+    color: #1b3d6d;
+}
 
+.page-content .widget-title {
+    background: #f9f9f9;
+    border: 1px solid #d9d9d9;
+    border-left: 0;
+    border-right: 0;
+    line-height: 32px;
+    color: #19232d;
+    font-size: 13px;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0 14px;
+    margin-bottom: 28px;
+}
+
+.lower-foot {
+    color: #cccccc;
+}
+
+.featured .caption {
+    background: rgba(25, 35, 45, 0.7);
+    text-shadow: 0px 1px 2px #000;
+}
+
+.top-bar .search .query {
+    font-size: 12px;
+}
+
+.slider .frame .flexslider h2 {
+    color:#ffffff;
 }
