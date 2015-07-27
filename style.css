@@ -79,7 +79,7 @@ span.comments {display:none;}
 }
 
 .post-header .post-title {
-    font-size: 25px;
+    font-size: 28px;
     font-weight: bold;
 }
 
@@ -160,6 +160,18 @@ span.comments {display:none;}
 
 .slider .frame .flexslider h2 {
     color: #ffffff;
+}
+
+.highlights-box.three-col .highlights .meta {
+    margin-top: 0px;
+}
+
+.highlights .meta {
+    margin-top: 0px;
+}
+
+.delim {
+    color:#656565;
 }
 
 @media only screen and (max-width: 480px) {
