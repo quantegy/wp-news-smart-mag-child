@@ -158,5 +158,11 @@ span.comments {display:none;}
 }
 
 .slider .frame .flexslider h2 {
-    color:#ffffff;
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 480px) {
+    .post-header .featured .caption {
+        visibility: hidden;
+    }
 }
