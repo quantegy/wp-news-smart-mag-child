@@ -41,12 +41,13 @@
 					}
 			?>
 			
-				<span class="cat-title cat-<?php echo $category->cat_ID; ?>"><a href="<?php echo esc_url(get_category_link($category)); 
+				<span class="cat-title cat-<?php echo $category->cat_ID;echo (!has_post_thumbnail() ? ' highlight-no-img' : ''); ?>"><a href="<?php echo esc_url(get_category_link($category));
 					?>"><?php echo esc_html($category->name); ?></a></span>
 					
 			<?php endif; ?>
 					
 				
+				<?php if(has_post_thumbnail()):?>
 				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="image-link">
 					<?php the_post_thumbnail('main-block', array('class' => 'image', 'title' => strip_tags(get_the_title()), 'itemprop' => 'image')); ?>
 					
@@ -57,6 +58,7 @@
 
 					<?php echo apply_filters('bunyad_review_main_snippet', '', 'stars'); ?>
 				</a>
+				<?php endif; ?>
 				
 				<div class="meta">
 					<time datetime="<?php echo get_the_date(__('Y-m-d\TH:i:sP', 'bunyad')); ?>" itemprop="datePublished"><?php echo get_the_date(); ?> </time>

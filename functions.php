@@ -4,8 +4,7 @@ error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 
 set_include_path(get_include_path().PATH_SEPARATOR.dirname(__FILE__).DIRECTORY_SEPARATOR.'includes');
 
-wp_enqueue_script('tabbable_nav', get_theme_root_uri().'/smart-mag-child/js/tabbable_menus.js', 'jquery', false, true);
-
+wp_enqueue_script('tabbable_nav', get_theme_root_uri().'/smart-mag-child/js/genesis-uci-menu-toggle.js', 'jquery', false, true);
 
 add_action('after_setup_theme', 'my_custom_init', 12);
 function my_custom_init() {
@@ -25,6 +24,20 @@ function my_custom_init() {
 add_action('wp_enqueue_scripts', 'ucinews_wp_print_scripts');
 function ucinews_wp_print_scripts() {
     wp_enqueue_style('smart-mag-child', get_theme_root_uri().'/smart-mag-child/css/child.css');
+}
+
+add_action('wp_enqueue_scripts', 'no_more_google_fonts', 20);
+function no_more_google_fonts() {
+    wp_dequeue_style('open-sans');
+    wp_deregister_style('open-sans');
+    wp_dequeue_style('smartmag-fonts');
+    wp_deregister_style('smartmag-fonts');
+
+    wp_register_style('open-sans', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700,600');
+    wp_register_style('smartmag-fonts', 'http://fonts.googleapis.com/css?family=Roboto+Slab:300,700,100,400');
+
+    wp_enqueue_style('open-sans');
+    wp_enqueue_style('smartmag-fonts');
 }
 
 add_filter('content_template', 'ucinews_content_template');
