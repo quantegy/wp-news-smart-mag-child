@@ -138,7 +138,7 @@ $review = Bunyad::posts()->meta('reviews');
 			</span>
 		</span>
 		
-		<span class="cats"><?php echo get_the_category_list(__(', ', 'bunyad')); ?></span>
+		<?php /* ?><span class="cats"><?php echo get_the_category_list(__(', ', 'bunyad')); ?></span><?php */ ?>
 			
 	</div>
 	
