@@ -119,7 +119,7 @@ $review = Bunyad::posts()->meta('reviews');
                 $isDisplayed = \CJ_Authorship\CJ_Authorship_Handler::isDisplayed(get_the_ID());
                 if(!empty($authors) && $isDisplayed):
             ?>
-			        <span class="reviewer" itemprop="author"><?php
+			        <span class="reviewer" itemprop="author">By <?php
 						$authorNames = array();
 						foreach($authors as $author){
 							$authorNames[] = $author->fullname;
@@ -128,7 +128,7 @@ $review = Bunyad::posts()->meta('reviews');
 						?></span>
                 <?php endif;
             else: ?>
-                <span class="reviewer" itemprop="author"><?php the_author_posts_link(); ?></span>
+                <span class="reviewer" itemprop="author">By <?php the_author_posts_link(); ?></span>
             <?php endif; ?>
 		</span>
 
@@ -261,7 +261,7 @@ $review = Bunyad::posts()->meta('reviews');
 <?php endif; ?>
 
 <?php
-
+/*
 if (is_plugin_active("cj-authorship/cj-authorship.php")):
     $authors = \CJ_Authorship\CJ_Authorship_Handler::getAuthors(get_the_ID());
     $isDisplayed = \CJ_Authorship\CJ_Authorship_Handler::isDisplayed(get_the_ID());
@@ -279,7 +279,7 @@ else:
     <?php get_template_part('partial-author');
 
     endif;
-endif; ?>
+endif; */?>
 
 <?php if (is_single() && Bunyad::options()->related_posts && ($related = Bunyad::posts()->get_related(Bunyad::core()->get_sidebar() == 'none' ? 3 : 3))): // && Bunyad::options()->related_posts != false): ?>
 
