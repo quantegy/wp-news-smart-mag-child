@@ -31,7 +31,7 @@
 
 				<?php get_template_part('partials/header/search'); ?>
 
-				<div role="navigation" aria-label="Secondary"><?php dynamic_sidebar('top-bar'); ?></div>
+				<div role="navigation" aria-label="tertiary"><?php dynamic_sidebar('top-bar'); ?></div>
 				
 			</section>
 		</div>

@@ -13,10 +13,10 @@ $review = Bunyad::posts()->meta('reviews');
 	<?php
     $portraitImage = ucinews_is_featured_portrait();
     if($portraitImage){
-        echo "<header class='post-header cf portrait-header'>";
+        echo "<div class='post-header cf portrait-header'>";
     }
     else{
-        echo "<header class='post-header cf'>";
+        echo "<div class='post-header cf'>";
     }
     ?>
 
@@ -79,7 +79,7 @@ $review = Bunyad::posts()->meta('reviews');
 		</div>
 	<?php endif; // featured check
     if($portraitImage){
-        echo "</header>";
+        echo "</div>";
     }
     ?>
 
@@ -101,7 +101,7 @@ $review = Bunyad::posts()->meta('reviews');
 		
 		<!-- <a href="<?php //comments_link(); ?>" class="comments"><i class="fa fa-comments-o"></i> <?php //echo get_comments_number(); ?></a>-->
 	<?php if(!$portraitImage): ?>
-	    </header><!-- .post-header -->
+	    </div><!-- .post-header -->
     <?php endif; ?>
     <?php
     $this_post_excerpt = get_post()->post_excerpt;

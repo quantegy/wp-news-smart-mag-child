@@ -127,7 +127,7 @@
 	</div>
 	
 <?php if (!Bunyad::options()->disable_breadcrumbs): ?>
-	<div class="wrap">
+	<div class="wrap" role="navigation" aria-label="secondary">
 		<?php Bunyad::core()->breadcrumbs(); ?>
 	</div>
 <?php endif; ?>
