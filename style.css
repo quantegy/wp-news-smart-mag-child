@@ -170,8 +170,8 @@ span.comments {display:none;}
     margin-top: 0px;
 }
 
-.delim {
-    color:#656565;
+.breadcrumbs .delim {
+    color: #656565;
 }
 
 @media only screen and (max-width: 480px) {
