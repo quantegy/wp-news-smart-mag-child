@@ -31,7 +31,7 @@ if (is_category()) {
 
 ?>
 
-<div class="main wrap cf">
+<main class="main wrap cf">
 	<div class="row">
 		<div class="col-8 main-content">
 	
@@ -88,6 +88,6 @@ if (is_category()) {
 		<?php Bunyad::core()->theme_sidebar(); ?>
 		
 	</div> <!-- .row -->
-</div> <!-- .main -->
+</main> <!-- .main -->
 
 <?php get_footer(); ?>

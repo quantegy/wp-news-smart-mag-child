@@ -127,3 +127,12 @@ function ucinews_filter_sidebar($sidebarName){
 
     return $str;
 }
+
+
+function uci_top_bar_filter($args) {
+    if($args['menu']->slug == 'above-header'){
+        $args['container'] = false;
+    }
+    return $args;
+}
+add_filter('wp_nav_menu_args', 'uci_top_bar_filter');
