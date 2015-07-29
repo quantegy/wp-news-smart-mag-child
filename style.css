@@ -81,6 +81,7 @@ span.comments {display:none;}
 .post-header .post-title {
     font-size: 28px;
     font-weight: bold;
+    line-height: 1.33em;
 }
 
 .post-header .post-title:before {
@@ -172,10 +173,4 @@ span.comments {display:none;}
 
 .breadcrumbs .delim {
     color: #656565;
-}
-
-@media only screen and (max-width: 480px) {
-    .post-header .featured .caption {
-        visibility: hidden;
-    }
 }
