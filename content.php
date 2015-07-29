@@ -65,18 +65,18 @@ $review = Bunyad::posts()->meta('reviews');
 					<?php the_post_thumbnail('thumbnail', array('title' => strip_tags(get_the_title()))); ?>
 				<?php endif; ?>
 				</a>
-								
-				<?php
-					$caption = get_post(get_post_thumbnail_id())->post_excerpt;
-					if (!empty($caption)): // have caption ? ?>
-						
-					<div class="caption"><?php echo $caption; ?></div>
-						
-					<?php endif;?>
-				
-				<?php endif; ?>
+
 			<?php endif; ?>
 		</div>
+		<?php
+			$caption = get_post(get_post_thumbnail_id())->post_excerpt;
+			if (!empty($caption)): // have caption ? ?>
+
+				<div class="caption"><?php echo $caption; ?></div>
+
+			<?php endif;?>
+
+		<?php endif; ?>
 	<?php endif; // featured check
     if($portraitImage){
         echo "</div>";
