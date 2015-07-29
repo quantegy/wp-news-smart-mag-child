@@ -132,7 +132,7 @@ $review = Bunyad::posts()->meta('reviews');
             <?php endif; ?>
 		</span>
 
-		<span class="posted-on"><?php _ex('on', 'Post Meta', 'bunyad'); ?>&nbsp;
+		<span class="posted-on"><?php _ex('on ', 'Post Meta', 'bunyad'); ?>
 			<span class="dtreviewed">
 				<time class="value-datetime" datetime="<?php echo esc_attr(get_the_time('c')); ?>" itemprop="datePublished"><?php echo esc_html(get_the_date()); ?></time>
 			</span>
