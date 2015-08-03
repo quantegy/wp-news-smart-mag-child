@@ -175,16 +175,3 @@ span.comments {display:none;}
 .breadcrumbs .delim {
     color: #656565;
 }
-
-@media only screen and (max-width: 480px) {
-    .post-header .featured .caption {
-        visibility: hidden;
-    }
-}
-
-.caption {
-    font-size:12px;
-    margin:-20px 0 25px 0;
-    padding:15px;
-    background-color:#f8f8f8;
-}
