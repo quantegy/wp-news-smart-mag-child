@@ -82,6 +82,7 @@ span.comments {display:none;}
     font-size: 28px;
     font-weight: bold;
     line-height: 1.33em;
+    float: none;
 }
 
 .post-header .post-title:before {
