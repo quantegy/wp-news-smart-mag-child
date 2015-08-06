@@ -81,97 +81,41 @@ if (empty($grid_query) && $query->found_posts > 5) {
 $i = $z = 0; // loop counters
 
 ?>
-	
 	<div class="main-featured">
 		<div class="wrap cf">
-		
-		<div class="row">
-			<div class="slider frame flexslider col-12" <?php echo $data_vars; ?>>
-				<ul class="slides">
-				
-				<?php while ($query->have_posts()): $query->the_post(); ?>
-					
-					<li>
-						<a href="<?php the_permalink(); ?>" class="image-link"><?php the_post_thumbnail('main-slider-full', array('alt' => esc_attr(get_the_title()), 'title' => '')); ?></a>					
-	
-						<?php 
-						// custom label selected?
-						if (($cat_label = Bunyad::posts()->meta('cat_label'))) {
-							$cat = get_category($cat_label);
-						}
-						else {
-							$cat = current(get_the_category());						
-						}
-						?>
-						<a href="<?php echo get_category_link($cat->term_id); ?>" class="cat cat-title cat-<?php echo $cat->cat_ID; ?>"><?php echo esc_html($cat->cat_name); ?></a>
-						
-						<div class="caption">
-
-							<time class="the-date" datetime="<?php echo esc_attr(get_the_time('c')); ?>"><?php echo esc_html(get_the_date()); ?></time>
-							
-							<h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-	
+			<?php $query->the_post(); ?>
+			<div class="container">
+				<div style="margin:0 0 65px 0; overflow:hidden; background-color:#19232D;" class="row">
+					<div style="margin-left:0px; padding:0px;" class="col-8">
+						<div style="max-height:375px; overflow:hidden;">
+							<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?></a>
 						</div>
-					</li>
-					
-				<?php 
-						if ($i++ == 4) {
-							break;
-						}
-
-					endwhile; //rewind_posts(); 
-				?>
-			
-				</ul>
-				
-				<div class="pages" data-number="<?php echo esc_attr($i); ?>">
-                    <?php for($j=0; $j<$i; $j++): ?>
-                    <a href="#"></a>
-                    <?php endfor; ?>
-				</div>
-				
-				
-			</div> <!-- .flexslider -->
-		
-			<div class="blocks col-4">
-			
-			<?php if (!empty($grid_query) && $grid_query->have_posts()): ?>
-			
-				<?php while ($grid_query->have_posts()): $grid_query->the_post(); $z++; 
-				
-						if (!has_post_thumbnail()) {
-							continue;
-						}
-						
-						// custom label selected?				
-						if (($cat_label = Bunyad::posts()->meta('cat_label'))) {
-							$category = get_category($cat_label);
-						}
-						else {
-							$category = current(get_the_category());						
-						}
-				?>
-				
-				<article class="<?php echo ($z == 1 ? 'large' : ($z == 2 ? 'small' : 'small last')); ?>">
-					 
-				<?php if ($z == 1): ?>
-					 <span class="cat cat-title cat-<?php echo $category->cat_ID; ?>"><a href="<?php echo esc_url(get_category_link($category)); ?>"><?php echo esc_html($category->name); ?></a></span>
-				<?php endif; ?>
-					 
-					 <a href="<?php the_permalink(); ?>" class="image-link"><?php 
-					 	the_post_thumbnail(($z == 1 ? 'main-block' : 'slider-small'), array('alt' => esc_attr(get_the_title()), 'title' => '')); ?></a>
-					 
-					 <h3><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-					
-				</article>
-				
-				
-				<?php endwhile; ?>
-				
-			<?php endif; // end post count check ?>				
+						<a href="<?php the_permalink(); ?>">
+							<h2 style="color:#e5e5e5; font-size:25px; letter-spacing:0px; padding:15px 10px 7px 18px; line-height:1.22em;"><?php the_title(); ?> <span style="margin-left:8px; color:#ffd200;">›</span></h2>
+						</a>
+					</div>
+					<?php $query->the_post(); ?>
+					<div class="col-4" style="border-left:solid 3px #ffffff; padding:0px; margin:0px;">
+						<div class="col-12" style="border-bottom: solid 3px #ffffff; padding:0px; margin:0px;">
+							<div style="max-height:185px; overflow:hidden;">
+								<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?></a>
+							</div>
+							<a href="<?php the_permalink(); ?>">
+								<h2 style="color:#e5e5e5; font-size:14px; letter-spacing:0px; padding:7px 10px 7px 13px; line-height:17px;"><?php the_title(); ?> <span style="margin-left:4px; color:#ffd200;">›</span></h2>
+							</a>
+						</div>
+						<?php $query->the_post(); ?>
+						<div class="col-12" style="padding:0px; margin:0px;">
+							<div style="max-height:185px; overflow:hidden;">
+								<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?></a>
+							</div>
+							<a href="<?php the_permalink(); ?>">
+								<h2 style="color:#e5e5e5; font-size:14px; letter-spacing:0px; padding:7px 10px 7px 13px; line-height:17px;"><?php the_title(); ?> <span style="margin-left:4px; color:#ffd200;">›</span></h2>
+							</a>
+						</div>
+					</div><!--end col-4-->
+				</div><!--end row-->
 			</div>
-			
-		</div> <!-- .row -->
 
 		<?php wp_reset_query(); ?>
 
