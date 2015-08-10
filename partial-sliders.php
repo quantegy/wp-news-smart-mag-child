@@ -91,17 +91,17 @@ $i = $z = 0; // loop counters
 							<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?></a>
 						</div>
 						<a href="<?php the_permalink(); ?>">
-							<h2><?php the_title(); ?> <span style="margin-left:8px; color:#ffd200;">›</span></h2>
+							<h2><?php the_title(); ?> <span class="featured-story-arrow">›</span></h2>
 						</a>
 					</div><!--end col-8-->
 					<?php $query->the_post(); ?>
 					<div class="col-4 marquee-container-secondary">
-						<div class="col-12" style="border-bottom: solid 3px #ffffff;">
+						<div class="col-12 top-placement">
 							<div class="marquee-img-secondary">
 								<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?></a>
 							</div>
 							<a href="<?php the_permalink(); ?>">
-								<h2><?php the_title(); ?> <span style="margin-left:4px; color:#ffd200;">›</span></h2>
+								<h2><?php the_title(); ?> <span class="featured-story-arrow">›</span></h2>
 							</a>
 						</div>
 						<?php $query->the_post(); ?>
@@ -110,7 +110,7 @@ $i = $z = 0; // loop counters
 								<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?></a>
 							</div>
 							<a href="<?php the_permalink(); ?>">
-								<h2><?php the_title(); ?> <span style="margin-left:4px; color:#ffd200;">›</span></h2>
+								<h2><?php the_title(); ?> <span class="featured-story-arrow">›</span></h2>
 							</a>
 						</div>
 					</div><!--end col-4-->
