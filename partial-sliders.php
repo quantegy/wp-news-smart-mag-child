@@ -84,38 +84,38 @@ $i = $z = 0; // loop counters
 	<div class="main-featured">
 		<div class="wrap cf">
 			<?php $query->the_post(); ?>
-			<div class="container">
-				<div style="margin:0 0 65px 0; overflow:hidden; background-color:#19232D;" class="row">
-					<div style="margin-left:0px; padding:0px;" class="col-8">
-						<div style="max-height:375px; overflow:hidden;">
+			<div class="container homepage-marquee">
+				<div class="row marquee-container">
+					<div class="col-8">
+						<div class="marquee-img-primary">
 							<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?></a>
 						</div>
 						<a href="<?php the_permalink(); ?>">
-							<h2 style="color:#e5e5e5; font-size:25px; letter-spacing:0px; padding:15px 10px 7px 18px; line-height:1.22em;"><?php the_title(); ?> <span style="margin-left:8px; color:#ffd200;">›</span></h2>
+							<h2><?php the_title(); ?> <span class="featured-story-arrow">›</span></h2>
 						</a>
-					</div>
+					</div><!--end col-8-->
 					<?php $query->the_post(); ?>
-					<div class="col-4" style="border-left:solid 3px #ffffff; padding:0px; margin:0px;">
-						<div class="col-12" style="border-bottom: solid 3px #ffffff; padding:0px; margin:0px;">
-							<div style="max-height:185px; overflow:hidden;">
+					<div class="col-4 marquee-container-secondary">
+						<div class="col-12 top-placement">
+							<div class="marquee-img-secondary">
 								<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?></a>
 							</div>
 							<a href="<?php the_permalink(); ?>">
-								<h2 style="color:#e5e5e5; font-size:14px; letter-spacing:0px; padding:7px 10px 7px 13px; line-height:17px;"><?php the_title(); ?> <span style="margin-left:4px; color:#ffd200;">›</span></h2>
+								<h2><?php the_title(); ?> <span class="featured-story-arrow">›</span></h2>
 							</a>
 						</div>
 						<?php $query->the_post(); ?>
-						<div class="col-12" style="padding:0px; margin:0px;">
-							<div style="max-height:185px; overflow:hidden;">
+						<div class="col-12">
+							<div class="marquee-img-secondary">
 								<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?></a>
 							</div>
 							<a href="<?php the_permalink(); ?>">
-								<h2 style="color:#e5e5e5; font-size:14px; letter-spacing:0px; padding:7px 10px 7px 13px; line-height:17px;"><?php the_title(); ?> <span style="margin-left:4px; color:#ffd200;">›</span></h2>
+								<h2><?php the_title(); ?> <span class="featured-story-arrow">›</span></h2>
 							</a>
 						</div>
 					</div><!--end col-4-->
 				</div><!--end row-->
-			</div>
+			</div><!--end container-->
 
 		<?php wp_reset_query(); ?>
 
