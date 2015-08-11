@@ -21,6 +21,7 @@ Version: 1.0
 
 .main {
     margin: 28px auto;
+    display: block;
 }
 
 .main-featured {
@@ -52,6 +53,11 @@ span.comments {
     z-index: 1;
 }
 
+.cat-title {
+    background-color: #fed12f;
+    background:;
+}
+
 .highlight-no-img {
     position: relative;
     margin-bottom: 20px;
@@ -68,6 +74,50 @@ span.comments {
     color: #656565;
 }
 
+.top-bar-content a {
+    color: #989898 !important;
+}
+
+::selection {
+    background-color: #b1d7fe;
+    color: #3a4149;
+}
+
+.main-pagination .current, .main-pagination a:hover {
+    background: #fed12f;
+}
+
+.main-heading, .page-title, .entry-title {
+    border-left: 3px solid #fed12f;
+}
+
+.navigation .menu > li:hover > a, .navigation .menu > .current-menu-item > a, .navigation .menu > .current-menu-parent > a, .navigation .menu > .current-menu-ancestor > a {
+    border-bottom: 2px solid #fed12f;
+}
+
+.top-bar {
+    border-top: none;
+    border-bottom: none;
+}
+
+.fa-search:before {
+    color: #18222c;
+}
+
+@media only screen and (max-width: 799px) {
+.mobile .search .query, .mobile .searchform input, .mobile .searchform #s {
+    color: #18222c !important;
+    }
+}
+
+.fa-navicon:before, .fa-reorder:before, .fa-bars:before {
+    color: #18222c;
+}
+
+.navigation .mobile .fa {
+    background: #fed12f !important;
+    }
+
 .posts-list .content time {
     color: #656565;
 }
@@ -81,8 +131,13 @@ span.comments {
     margin: 18px 0 10px 0;
 }
 
+.post-header .post-title:before {
+    border-left: 3px solid #fed12f;    
+}
+
 .highlights h2:before {
     margin-top: 5px;
+    border-left: 3px solid #fed12f;
 }
 
 .post-excerpt {
@@ -228,7 +283,7 @@ span.comments {
 
 .featured-story-arrow {
     margin-left: 5px;
-    color: #ffd200;
+    color: #1b3d6d;
 }
 
 @media only screen and (min-width: 768px) {
