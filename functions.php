@@ -2,9 +2,16 @@
 ini_set('display_errors', false);
 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 
+@define("UCI_META_PERMALINK", 'uci_permalink');
+
 set_include_path(get_include_path().PATH_SEPARATOR.dirname(__FILE__).DIRECTORY_SEPARATOR.'includes');
 
 wp_enqueue_script('tabbable_nav', get_theme_root_uri().'/smart-mag-child/js/genesis-uci-menu-toggle.js', 'jquery', false, true);
+
+add_action('init', 'uci_init');
+function uci_init() {
+    add_post_type_support('post', UCI_META_PERMALINK);
+}
 
 add_action('after_setup_theme', 'my_custom_init', 12);
 function my_custom_init() {
@@ -136,3 +143,34 @@ function uci_top_bar_filter($args) {
     return $args;
 }
 add_filter('wp_nav_menu_args', 'uci_top_bar_filter');
+
+/**
+ * Adds a text field for copying the post's full permalink URL
+ */
+add_action("add_meta_boxes", 'uci_add_metaboxes');
+function uci_add_metaboxes($post_type, $post) {
+    if(post_type_supports($post_type, UCI_META_PERMALINK)) {
+        add_meta_box(UCI_META_PERMALINK, 'URL', 'uci_display_permalink_metabox', $post_type, 'normal', 'high');
+    }
+}
+
+function uci_display_permalink_metabox($post) {
+    $permalink = get_permalink($post->ID);
+    if(in_array($post->post_status, array('draft', 'pending', 'auto-draft'))) {
+        require_once ABSPATH . '/wp-admin/includes/post.php';
+        list($permalink, $postname) = get_sample_permalink($post->ID);
+
+        $permalink = str_replace('%pagename%', $postname, $permalink);
+    }
+
+    ?>
+    <script type="text/javascript">
+        jQuery(document).on('focus', '#<?php echo UCI_META_PERMALINK; ?>:text', function(e) {
+            jQuery(this).select();
+        }).on('mouseup', '#<?php echo UCI_META_PERMALINK; ?>:text', function(e) {
+            e.preventDefault();
+        });
+    </script>
+    <input style="width:100%;" type="text" name="<?php echo UCI_META_PERMALINK; ?>" id="<?php echo UCI_META_PERMALINK; ?>" value="<?php echo $permalink; ?>" />
+    <?php
+}
