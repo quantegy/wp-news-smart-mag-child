@@ -19,6 +19,32 @@ Version: 1.0
     padding-right: 0;
 }*/
 
+.homepage-marquee .col-4 h2 {
+    color: #1b3d6d;
+    font-size: 14px;
+    letter-spacing: 0px;
+    padding: 7px 10px 7px 13px;
+    line-height: 17px;
+}
+
+.marquee-container .col-8 {
+    margin: 0 !important;
+}
+
+.marquee-container-secondary .col-12 {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.marquee-container {
+    margin: 0;
+    overflow: hidden;
+}
+
+.homepage-marquee .row .col-8 {
+    padding-left: 0;
+}
+
 .main {
     margin: 28px auto;
     display: block;
@@ -55,7 +81,6 @@ span.comments {
 
 .cat-title {
     background-color: #fed12f;
-    background:;
 }
 
 .highlight-no-img {
@@ -83,10 +108,6 @@ span.comments {
     color: #3a4149;
 }
 
-.main-pagination .current, .main-pagination a:hover {
-    background: #fed12f;
-}
-
 .main-heading, .page-title, .entry-title {
     border-left: 3px solid #fed12f;
 }
@@ -102,6 +123,10 @@ span.comments {
 
 .fa-search:before {
     color: #18222c;
+}
+
+.main-pagination .current, .main-pagination a:hover {
+    background: #fed12f;
 }
 
 @media only screen and (max-width: 799px) {
@@ -131,13 +156,13 @@ span.comments {
     margin: 18px 0 10px 0;
 }
 
-.post-header .post-title:before {
-    border-left: 3px solid #fed12f;    
-}
-
 .highlights h2:before {
     margin-top: 5px;
     border-left: 3px solid #fed12f;
+}
+
+.post-header .post-title:before {
+    border-left: 3px solid #fed12f;    
 }
 
 .post-excerpt {
@@ -163,12 +188,12 @@ span.comments {
     color: #656565;
 }
 
-.breadcrumbs .location {
-    color: #656565 !important;
-}
-
 .breadcrumbs {
     color: #656565;
+}
+
+.breadcrumbs .location {
+    color: #656565 !important;
 }
 
 .related-posts .section-head {
@@ -195,7 +220,6 @@ span.comments {
 
 .main-pagination a:hover {
     color: #1b3d6d;
-
 }
 
 .page-content .widget-title {
@@ -211,10 +235,6 @@ span.comments {
     text-transform: uppercase;
     padding: 0 14px;
     margin-bottom: 28px;
-}
-
-.lower-foot {
-    color: #cccccc;
 }
 
 .featured .caption {
@@ -255,64 +275,13 @@ span.comments {
     display: block;
 }
 
-.marquee-container .col-8 {
-    margin: 0 !important;
-}
-
-.marquee-container-secondary .col-12 {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.marquee-container {
-    margin: 0;
-    overflow: hidden;
-}
-
-.homepage-marquee .row .col-8 {
-    padding-left: 0;
-}
-
-.homepage-marquee .col-4 h2 {
-    color: #1b3d6d;
-    font-size: 14px;
-    letter-spacing: 0px;
-    padding: 7px 10px 7px 13px;
-    line-height: 17px;
-}
-
 .featured-story-arrow {
     margin-left: 5px;
     color: #1b3d6d;
 }
 
-@media only screen and (min-width: 768px) {
-    .marquee-container-secondary {
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    .homepage-marquee .col-8 h2 {
-        color: #1b3d6d;
-        font-size: 25px;
-        letter-spacing: 0px;
-        padding: 15px 10px 7px 18px;
-        line-height: 1.22em;
-    }
-
-    .col-8 .marquee-img-primary {
-        max-height: 375px;
-        overflow: hidden;
-    }
-
-    .col-12 .marquee-img-secondary {
-        max-height: 185px;
-        overflow: hidden;
-    }
-
-    .marquee-container-secondary .top-placement {
-        border-bottom: solid 3px #f2f2f2;
-    }
+.lower-foot {
+    color: #cccccc;
 }
 
 @media only screen and (max-width: 767px) {
@@ -355,3 +324,44 @@ span.comments {
     }
 }
 
+@media only screen and (min-width: 768px) {
+    .marquee-container-secondary {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .homepage-marquee .col-8 h2 {
+        color: #1b3d6d;
+        font-size: 25px;
+        letter-spacing: 0px;
+        padding: 15px 10px 7px 18px;
+        line-height: 1.22em;
+    }
+
+    .col-8 .marquee-img-primary {
+        max-height: 375px;
+        overflow: hidden;
+    }
+
+    .col-12 .marquee-img-secondary {
+        max-height: 185px;
+        overflow: hidden;
+    }
+
+    .marquee-container-secondary .top-placement {
+        border-bottom: solid 3px #f2f2f2;
+    }
+}
+
+/* main navigation responsive fix */
+@media only screen and (min-width: 768px) and (max-width: 850px) {
+    .navigation .menu li > a {
+        padding: 0 8px !important;
+    }
+}
+
+@media only screen and (min-width: 829px) and (max-width: 992px) {
+    .navigation .menu li > a {
+        padding: 0 13px !important;
+    }
+}
