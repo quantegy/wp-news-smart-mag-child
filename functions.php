@@ -174,3 +174,13 @@ function uci_display_permalink_metabox($post) {
     <input style="width:100%;" type="text" name="<?php echo UCI_META_PERMALINK; ?>" id="<?php echo UCI_META_PERMALINK; ?>" value="<?php echo $permalink; ?>" />
     <?php
 }
+
+/**
+ * Force default admin menu theme for dev
+ */
+add_filter('get_user_option_admin_color', 'change_admin_color');
+function change_admin_color($result) {
+    if(DOMAIN_CURRENT_SITE == 'dev.news.uci.edu') {
+        return 'ectoplasm';
+    }
+}
