@@ -334,7 +334,7 @@ span.comments {
 }
 
 .appear {
-    transition: none;
+    transition: all 0s ease 0s;
 }
 
 /* main navigation responsive fix */
