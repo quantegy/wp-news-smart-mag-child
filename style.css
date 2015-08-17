@@ -333,6 +333,10 @@ span.comments {
     }
 }
 
+.appear {
+    transition: none;
+}
+
 /* main navigation responsive fix */
 @media only screen and (min-width: 800px) and (max-width: 850px) {
     .navigation .menu li > a {
