@@ -11,5 +11,3 @@ Either clone this repository, or download and extract zip to into wp-content/the
 ## Support
 
 Have questions about this theme, or need support? Please, contact Chris Walsh <walshcj@uci.edu>
-
-### Test
