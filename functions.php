@@ -1,6 +1,7 @@
 <?php
 ini_set('display_errors', false);
 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+//hello
 
 @define("UCI_META_PERMALINK", 'uci_permalink');
 
